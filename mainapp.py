@@ -1,4 +1,4 @@
-from pathlib import Path # for creating save folders and files
+from pathlib import Path  # for creating save folders and files
 
 
 # the main function for user input
@@ -16,8 +16,8 @@ def writing():
     return write
 
 
-save_file = [] # short term save file
-path = Path('Saves') # location of the save files
+save_file = []  # short term save file
+path = Path('Saves')  # location of the save files
 all_saves = Path('Saves\All_saves1~.txt')
 
 # identifying the save files for creating new ones:
@@ -29,10 +29,11 @@ files = {}
 for i in all_path:
     last_save_file.append(str(i))
 for c in last_save_file:
-    if '~' in c: # the '~' symbol is used to identify the files generated from the program
+    if '~' in c:  # the '~' symbol is used to identify the files generated from the program
         for l in c:
             if l in numbers:
-                files[c] = int(files.get(c, 0)) + int(l) # getting the number value of the files
+                # getting the number value of the files
+                files[c] = int(files.get(c, 0)) + int(l)
 
 
 if all_saves.exists():
@@ -40,14 +41,15 @@ if all_saves.exists():
 
     for item in files:
         all_numbers.append(files.get(item))
-    
-    # finding the largest number in the files 
+
+    # finding the largest number in the files
     max = 0
     for num in all_numbers:
         if max < num:
             max = num
 
-    all_saves_second = Path(f'Saves/All_saves{max + 1}~.txt') # creating the name for the new file
+    # creating the name for the new file
+    all_saves_second = Path(f'Saves/All_saves{max + 1}~.txt')
 
     while True:
         writing_e = writing()
@@ -58,7 +60,8 @@ if all_saves.exists():
 
         if writing_e == 'end':
             save_file.remove('end')
-            all_saves_second.write_text(str(save_file)) # using the new name for file creation
+            # using the new name for file creation
+            all_saves_second.write_text(str(save_file))
             print(f'Full save >>>>{all_saves_second.read_text()}<<<<')
             break
 
@@ -76,7 +79,7 @@ if all_saves.exists() == False:
 
         if writing_e == 'end':
             save_file.remove('end')
-            
+
             # creating the 'Saves' folder and the first save file
             folder = Path("Saves/")
             folder.mkdir(parents=True, exist_ok=True)
