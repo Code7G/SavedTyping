@@ -73,7 +73,7 @@ if all_saves.exists():
             save_file.remove('saved')
             print(f'Last save >>>>{save_file}<<<<')
 
-if all_saves.exists() == False:
+else:
     while True:
         writing_e = writing()
         save_file.append(writing_e)
